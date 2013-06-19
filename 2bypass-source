@@ -1,0 +1,21 @@
+<?php
+//error_reporting(0);
+unset($_GET['1337']);
+$filter = '/\(|\)|\[|\]|`|\'|"|\.|\+|\.|(\$_POST)|;|filter|count/';
+$error  = 'Something went wrong!';
+$detect = 'Gay deteced!';
+$count  = 0;
+foreach(Array('_GET') as $_request)
+    foreach($$_request as $_k => $_v){
+        if ($count >= 2) exit($detect);
+        if (preg_match($filter,$_k) || strlen($_k)>7) exit($detect);
+        if (preg_match($filter,$_v) || strlen($_v)>7) exit($detect);
+        eval("\${$_k} = {$_v};");
+        $count++;
+    }
+$flag = 'Y0u_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+if (isset($_GET['1337'])) echo 'Blow job! Your Flag: '.$flag;
+else echo $error;
+?>
+
+
